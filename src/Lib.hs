@@ -75,7 +75,7 @@ instance Read Statement where
                          return (f st1 st2, rs2)
 
 instance Show Statement where
-  show (Var x)   = [x]
+  show (Var x)   = "(" ++[x] ++")"
   show (Neg x)   = "(~" ++ show x ++ ")"
   show (Alt x y) = "("++ show x ++ " v " ++ show y ++ ")"
   show (Con x y) = "("++ show x ++ " ^ " ++ show y ++ ")"
@@ -95,7 +95,7 @@ getVariables (Equ x y) = nub $ getVariables x ++ getVariables y
 
 
 valuations :: [Char] -> [[(Char,Bool)]]
-valuations l = map (zip l) $ sequence $ take (length l) $ repeat [False, True]
+valuations l = map (zip l) $ sequence $ replicate (length l) [False, True]
 
 eval' :: [(Char,Bool)] -> Statement -> Bool
 eval' l (Var x)   = fromJust $ lookup x l
