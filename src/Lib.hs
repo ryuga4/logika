@@ -17,7 +17,7 @@ trim = f . f
 trimParen :: String -> String
 trimParen s = trimParen' 0 s
   where trimParen' :: Int -> String -> String
-        trimParen _ [] = []
+        trimParen' _ [] = []
         trimParen' 1 (')':_) = []
         trimParen' 0 ('(':as) = trimParen' 1 as
         trimParen' 0 (_:as) = trimParen' 0 as
