@@ -134,3 +134,8 @@ zadanie3 s = zadanie2 mapped
         filtered = filter (not . snd) table
         mapped = map (zadanie1 . fst) filtered
 
+
+
+
+
+
